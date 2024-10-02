@@ -1,0 +1,9 @@
+{
+	"scripts": {
+		"start": "node app.js",
+		"local": "node app.js local"
+	},
+	"dependencies": {
+		"mysql": "^2.18.1"
+	}
+}
