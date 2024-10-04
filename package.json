@@ -1,10 +1,13 @@
 {
+	"type": "module",
 	"scripts": {
 		"start": "node app.js",
 		"local": "node app.js local"
 	},
 	"dependencies": {
+		"body-parser": "^1.20.3",
 		"express": "^4.21.0",
+		"jose": "^5.9.3",
 		"mysql": "^2.18.1",
 		"react": "^18.3.1"
 	}
