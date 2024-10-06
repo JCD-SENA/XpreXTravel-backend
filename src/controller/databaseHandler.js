@@ -22,8 +22,15 @@ class databaseHandler {
 	}
 }
 
-function checkIfInjection(txt) {
-
+function invalidQueryValue(txt) {
+	return (
+		txt.includes("\"") ||
+		txt.includes("'") ||
+		txt.includes("`") ||
+		txt.includes(" ") ||
+		txt.includes("\t") ||
+		txt.includes("=")
+	)
 }
 
-export {databaseHandler, checkIfInjection}
+export {databaseHandler, invalidQueryValue}

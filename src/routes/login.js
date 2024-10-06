@@ -3,7 +3,7 @@
 	Si el request es valido entonces devuelve los datos del usuario, pero si no lo es o ocurre algún error entonces es false
 */
 
-import { checkIfInjection } from "../controller/databaseHandler.js"
+import { invalidQueryValue } from "../controller/databaseHandler.js"
 
 export default (con, req, finish, error) => {
 	if ((req.password == undefined || req.email == undefined) || req.password.length < 1 || req.email.length < 1) { //En caso de que el request del login no tenga la información correcta, entonces es invalido
@@ -11,8 +11,8 @@ export default (con, req, finish, error) => {
 		return null
 	} else {
 		//idUsers, profile_picture, names, last_names, email, password, role
-		if (checkIfInjection(req.password) || checkIfInjection(req.email)) {
-			console.log("Se intentó realizar una inyección de SQL")
+		if (invalidQueryValue(req.password) || invalidQueryValue(req.email)) {
+			console.log("Valor invalido")
 			error()
 			return null
 		} else {
@@ -29,7 +29,7 @@ export default (con, req, finish, error) => {
 							error()
 							return null
 						}
-						finish(resUser[0])
+						finish(JSON.parse(JSON.stringify(resUser[0])))
 					})
 				} else {
 					console.log("Información de logging invalida")

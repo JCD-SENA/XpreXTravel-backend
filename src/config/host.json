@@ -1,4 +1,5 @@
 {
 	"host": "127.0.0.1",
-	"port": "3307"
+	"port": "3307",
+	"jwtSecret": "b3a9c5cb460f426de3ae067b7e3affe6"
 }
